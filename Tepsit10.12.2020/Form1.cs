@@ -43,19 +43,19 @@ namespace Tepsit10._12._2020
             strPort = txt_serverport.Text;
             if (!IPAddress.TryParse(strIPAddress.Trim(), out ipAddr))
             {
-               errore.Text="IP non valido.";//se fallisco do il messaggio e chiudo il programma
+               errore.Text="IP non valido .";//se fallisco do il messaggio e chiudo il programma
                 return;
             }
             // Provo a copiare la porta in forma di stringa nella varibile intera
             if (!int.TryParse(strPort, out nPort))
             {
-                errore.Text = "Porta non valida."; //se fallisco do il messaggio e chiudo il programma
+                errore.Text = "Porta non valida ."; //se fallisco do il messaggio e chiudo il programma
                 return;
             }
             // Controllo che la porta sia compresa fra 0 e 65535
             if (nPort <= 0 || nPort >= 65535)
             {
-                errore.Text = "Porta non valida."; //se fallisco do il messaggio e chiudo il programma
+                errore.Text = "Porta non valida ."; //se fallisco do il messaggio e chiudo il programma
                 return;
             }
             errore.Text = "Endpoint: " + ipAddr.ToString() + " " + nPort;

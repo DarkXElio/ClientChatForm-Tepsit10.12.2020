@@ -94,17 +94,27 @@ namespace Tepsit10._12._2020
                 // mi metto in ascolto del messaggio del server
                 recvBytes = client.Receive(recvBuff);
                 recvString = Encoding.ASCII.GetString(recvBuff);
-                //lo scrivo a video
-                lstbox_messagio_server.Items.Add("Client: " + txt_mesaggio.Text);
-                lstbox_messagio_server.Items.Add("Server: " + recvString);
 
-                //Pulisco le variabili
-                Array.Clear(recvBuff, 0, recvBuff.Length);
-                Array.Clear(sendBuff, 0, sendBuff.Length);
-                recvString = "";
-                sendString = "";
-                recvBytes = 0;
-                txt_mesaggio.Text = "";
+                
+                lstbox_messagio_server.Items.Add("Client: " + txt_mesaggio.Text);
+
+                string[] subs = recvString.Split(';');
+                foreach (string element in subs)
+                {
+                    lstbox_messagio_server.Items.Add("Server: " + element);
+                }
+
+                //lo scrivo a video
+
+
+                    //Pulisco le variabili
+                    Array.Clear(recvBuff, 0, recvBuff.Length);
+                    Array.Clear(sendBuff, 0, sendBuff.Length);
+                    recvString = "";
+                    sendString = "";
+                    recvBytes = 0;
+                    txt_mesaggio.Text = "";
+               
             }
 
             if (txt_mesaggio.Text.ToUpper().Trim() == "QUIT")

@@ -28,7 +28,7 @@ namespace Tepsit10._12._2020
         public Form1()
         {
             InitializeComponent();
-            
+            Size = new Size(501, 156);
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             btn_Send.Visible = false;
             txt_mesaggio.Visible = false;
@@ -65,6 +65,11 @@ namespace Tepsit10._12._2020
             {
                 client.Connect(ipAddr, nPort);
                 errore.Text = "Connection Succesfull;";
+
+                txt_severip.Enabled = false;
+                txt_serverport.Enabled = false;
+                btn_connect.Enabled = false;
+
                 Size = new Size(501, 399);
                 btn_Send.Visible = true;
                 txt_mesaggio.Visible = true;
@@ -82,31 +87,48 @@ namespace Tepsit10._12._2020
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
-            
             sendBuff = Encoding.ASCII.GetBytes(txt_mesaggio.Text);
-            client.Send(sendBuff);
-            if (sendString.ToUpper().Trim() == "QUIT")
+            if (txt_mesaggio.Text.ToUpper().Trim() != "QUIT")
+            {
+                client.Send(sendBuff);
+                // mi metto in ascolto del messaggio del server
+                recvBytes = client.Receive(recvBuff);
+                recvString = Encoding.ASCII.GetString(recvBuff);
+                //lo scrivo a video
+                lstbox_messagio_server.Items.Add("Client: " + txt_mesaggio.Text);
+                lstbox_messagio_server.Items.Add("Server: " + recvString);
+
+                //Pulisco le variabili
+                Array.Clear(recvBuff, 0, recvBuff.Length);
+                Array.Clear(sendBuff, 0, sendBuff.Length);
+                recvString = "";
+                sendString = "";
+                recvBytes = 0;
+                txt_mesaggio.Text = "";
+            }
+
+            if (txt_mesaggio.Text.ToUpper().Trim() == "QUIT")
             {
                 btn_Send.Visible = false;
                 txt_mesaggio.Visible = false;
                 Messagio.Visible = false;
                 lstbox_messagio_server.Visible = false;
+                client.Send(sendBuff);
+                client.Close();
+                client.Dispose();
+                errore.Text = "Ti sei disconneso :)";
+                Size = new Size(501, 156);
+
+                txt_severip.Enabled = true;
+                txt_serverport.Enabled = true;
+                btn_connect.Enabled = true;
+
             }
 
-            // mi metto in ascolto del messaggio del server
-            recvBytes = client.Receive(recvBuff);
-            recvString = Encoding.ASCII.GetString(recvBuff);
-            //lo scrivo a video
-            lstbox_messagio_server.Items.Add("Client: " + txt_mesaggio.Text);
-            lstbox_messagio_server.Items.Add("Server: " + recvString);
 
-            //Pulisco le variabili
-            Array.Clear(recvBuff, 0, recvBuff.Length);
-            Array.Clear(sendBuff, 0, sendBuff.Length);
-            recvString = "";
-            sendString = "";
-            recvBytes = 0;
-            txt_mesaggio.Text = "";
+          
         }
+
+       
     }
 }

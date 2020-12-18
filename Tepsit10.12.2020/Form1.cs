@@ -135,6 +135,8 @@ namespace Tepsit10._12._2020
                 txt_severip.Enabled = true;
                 txt_serverport.Enabled = true;
                 btn_connect.Enabled = true;
+                btn_disconeti.Visible = false;
+                btn_connect.Location = new Point(227, 89);
 
             }
 

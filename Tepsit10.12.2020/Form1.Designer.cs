@@ -41,12 +41,14 @@
             this.@__hr = new System.Windows.Forms.Label();
             this.errore = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_disconeti = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Serverip
             // 
             this.Serverip.AutoSize = true;
-            this.Serverip.Location = new System.Drawing.Point(90, 15);
+            this.Serverip.Location = new System.Drawing.Point(12, 78);
             this.Serverip.Name = "Serverip";
             this.Serverip.Size = new System.Drawing.Size(54, 13);
             this.Serverip.TabIndex = 0;
@@ -55,7 +57,7 @@
             // Serverport
             // 
             this.Serverport.AutoSize = true;
-            this.Serverport.Location = new System.Drawing.Point(90, 45);
+            this.Serverport.Location = new System.Drawing.Point(12, 108);
             this.Serverport.Name = "Serverport";
             this.Serverport.Size = new System.Drawing.Size(63, 13);
             this.Serverport.TabIndex = 1;
@@ -63,7 +65,7 @@
             // 
             // txt_severip
             // 
-            this.txt_severip.Location = new System.Drawing.Point(172, 7);
+            this.txt_severip.Location = new System.Drawing.Point(94, 70);
             this.txt_severip.Name = "txt_severip";
             this.txt_severip.Size = new System.Drawing.Size(100, 20);
             this.txt_severip.TabIndex = 2;
@@ -71,7 +73,7 @@
             // 
             // txt_serverport
             // 
-            this.txt_serverport.Location = new System.Drawing.Point(172, 45);
+            this.txt_serverport.Location = new System.Drawing.Point(94, 108);
             this.txt_serverport.Name = "txt_serverport";
             this.txt_serverport.Size = new System.Drawing.Size(100, 20);
             this.txt_serverport.TabIndex = 3;
@@ -79,7 +81,7 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(322, 24);
+            this.btn_connect.Location = new System.Drawing.Point(227, 89);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(75, 23);
             this.btn_connect.TabIndex = 4;
@@ -90,7 +92,7 @@
             // Messagio
             // 
             this.Messagio.AutoSize = true;
-            this.Messagio.Location = new System.Drawing.Point(90, 121);
+            this.Messagio.Location = new System.Drawing.Point(12, 184);
             this.Messagio.Name = "Messagio";
             this.Messagio.Size = new System.Drawing.Size(52, 13);
             this.Messagio.TabIndex = 5;
@@ -98,14 +100,14 @@
             // 
             // txt_mesaggio
             // 
-            this.txt_mesaggio.Location = new System.Drawing.Point(172, 121);
+            this.txt_mesaggio.Location = new System.Drawing.Point(94, 184);
             this.txt_mesaggio.Name = "txt_mesaggio";
             this.txt_mesaggio.Size = new System.Drawing.Size(100, 20);
             this.txt_mesaggio.TabIndex = 6;
             // 
             // btn_Send
             // 
-            this.btn_Send.Location = new System.Drawing.Point(322, 117);
+            this.btn_Send.Location = new System.Drawing.Point(244, 180);
             this.btn_Send.Name = "btn_Send";
             this.btn_Send.Size = new System.Drawing.Size(75, 23);
             this.btn_Send.TabIndex = 7;
@@ -116,7 +118,7 @@
             // lstbox_messagio_server
             // 
             this.lstbox_messagio_server.FormattingEnabled = true;
-            this.lstbox_messagio_server.Location = new System.Drawing.Point(93, 146);
+            this.lstbox_messagio_server.Location = new System.Drawing.Point(15, 209);
             this.lstbox_messagio_server.Name = "lstbox_messagio_server";
             this.lstbox_messagio_server.Size = new System.Drawing.Size(304, 199);
             this.lstbox_messagio_server.TabIndex = 8;
@@ -124,7 +126,7 @@
             // _hr_
             // 
             this._hr_.AutoSize = true;
-            this._hr_.Location = new System.Drawing.Point(112, 68);
+            this._hr_.Location = new System.Drawing.Point(34, 131);
             this._hr_.Name = "_hr_";
             this._hr_.Size = new System.Drawing.Size(238, 13);
             this._hr_.TabIndex = 9;
@@ -133,7 +135,7 @@
             // __hr
             // 
             this.@__hr.AutoSize = true;
-            this.@__hr.Location = new System.Drawing.Point(110, 101);
+            this.@__hr.Location = new System.Drawing.Point(32, 164);
             this.@__hr.Name = "__hr";
             this.@__hr.Size = new System.Drawing.Size(238, 13);
             this.@__hr.TabIndex = 10;
@@ -142,10 +144,11 @@
             // errore
             // 
             this.errore.AutoSize = true;
-            this.errore.Location = new System.Drawing.Point(172, 85);
+            this.errore.Location = new System.Drawing.Point(34, 151);
             this.errore.Name = "errore";
-            this.errore.Size = new System.Drawing.Size(0, 13);
+            this.errore.Size = new System.Drawing.Size(62, 13);
             this.errore.TabIndex = 11;
+            this.errore.Text = "Benvenuto ";
             // 
             // label1
             // 
@@ -158,11 +161,33 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Marelio Bejko";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Pristina", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(45, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(237, 39);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "ChatClient DKHTeam";
+            // 
+            // btn_disconeti
+            // 
+            this.btn_disconeti.Location = new System.Drawing.Point(227, 105);
+            this.btn_disconeti.Name = "btn_disconeti";
+            this.btn_disconeti.Size = new System.Drawing.Size(75, 23);
+            this.btn_disconeti.TabIndex = 14;
+            this.btn_disconeti.Text = "Disconneti";
+            this.btn_disconeti.UseVisualStyleBackColor = true;
+            this.btn_disconeti.Click += new System.EventHandler(this.btn_disconeti_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 417);
+            this.ClientSize = new System.Drawing.Size(328, 415);
+            this.Controls.Add(this.btn_disconeti);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.errore);
             this.Controls.Add(this.@__hr);
@@ -199,6 +224,8 @@
         private System.Windows.Forms.Label __hr;
         private System.Windows.Forms.Label errore;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_disconeti;
     }
 }
 

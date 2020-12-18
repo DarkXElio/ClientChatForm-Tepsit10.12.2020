@@ -28,12 +28,13 @@ namespace Tepsit10._12._2020
         public Form1()
         {
             InitializeComponent();
-            Size = new Size(501, 156);
+            Size = new Size(344, 218);
             client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             btn_Send.Visible = false;
             txt_mesaggio.Visible = false;
             Messagio.Visible = false;
             lstbox_messagio_server.Visible = false;
+            btn_disconeti.Visible = false;
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -65,12 +66,14 @@ namespace Tepsit10._12._2020
             {
                 client.Connect(ipAddr, nPort);
                 errore.Text = "Connection Succesfull;";
+                btn_connect.Location = new Point(227, 68);
+
 
                 txt_severip.Enabled = false;
                 txt_serverport.Enabled = false;
                 btn_connect.Enabled = false;
-
-                Size = new Size(501, 399);
+                btn_disconeti.Visible = true;
+                Size = new Size(344, 454);
                 btn_Send.Visible = true;
                 txt_mesaggio.Visible = true;
                 Messagio.Visible=true;
@@ -127,7 +130,7 @@ namespace Tepsit10._12._2020
                 client.Close();
                 client.Dispose();
                 errore.Text = "Ti sei disconneso :)";
-                Size = new Size(501, 156);
+                Size = new Size(344, 218);
 
                 txt_severip.Enabled = true;
                 txt_serverport.Enabled = true;
@@ -139,6 +142,24 @@ namespace Tepsit10._12._2020
           
         }
 
-       
+        private void btn_disconeti_Click(object sender, EventArgs e)
+        {
+            sendBuff = Encoding.ASCII.GetBytes("QUIT");
+            btn_Send.Visible = false;
+            txt_mesaggio.Visible = false;
+            Messagio.Visible = false;
+            lstbox_messagio_server.Visible = false;
+            btn_disconeti.Visible = false;
+            client.Send(sendBuff);
+            client.Close();
+            client.Dispose();
+            errore.Text = "Ti sei disconneso :)";
+            Size = new Size(344, 218);
+
+            txt_severip.Enabled = true;
+            txt_serverport.Enabled = true;
+            btn_connect.Enabled = true;
+            btn_connect.Location = new Point(227,89);
+        }
     }
 }

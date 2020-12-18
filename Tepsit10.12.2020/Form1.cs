@@ -129,7 +129,7 @@ namespace Tepsit10._12._2020
                 client.Send(sendBuff);
                 client.Close();
                 client.Dispose();
-                errore.Text = "Ti sei disconneso :)";
+                errore.Text = "Ti sei disconneso :) ";
                 Size = new Size(344, 218);
 
                 txt_severip.Enabled = true;

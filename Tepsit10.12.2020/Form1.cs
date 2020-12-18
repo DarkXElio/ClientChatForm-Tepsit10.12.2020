@@ -20,7 +20,6 @@ namespace Tepsit10._12._2020
         string strIPAddress = "";
         string strPort = "";
         int nPort = 0;
-        string sendString = "";
         string recvString = "";
         byte[] sendBuff = new byte[128];
         byte[] recvBuff = new byte[128];
@@ -29,17 +28,18 @@ namespace Tepsit10._12._2020
         {
             InitializeComponent();
             Size = new Size(344, 218);
-            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             btn_Send.Visible = false;
             txt_mesaggio.Visible = false;
             Messagio.Visible = false;
             lstbox_messagio_server.Visible = false;
             btn_disconeti.Visible = false;
+
+
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
-            
+            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             strIPAddress = txt_severip.Text;
             strPort = txt_serverport.Text;
             if (!IPAddress.TryParse(strIPAddress.Trim(), out ipAddr))
@@ -90,8 +90,13 @@ namespace Tepsit10._12._2020
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
-            sendBuff = Encoding.ASCII.GetBytes(txt_mesaggio.Text);
-            if (txt_mesaggio.Text.ToUpper().Trim() != "QUIT")
+
+
+
+
+
+                sendBuff = Encoding.ASCII.GetBytes(txt_mesaggio.Text);
+            if (txt_mesaggio.Text.ToUpper().Trim() != "QUIT" && txt_mesaggio.Text.ToUpper().Trim() != "")
             {
                 client.Send(sendBuff);
                 // mi metto in ascolto del messaggio del server
@@ -114,7 +119,6 @@ namespace Tepsit10._12._2020
                     Array.Clear(recvBuff, 0, recvBuff.Length);
                     Array.Clear(sendBuff, 0, sendBuff.Length);
                     recvString = "";
-                    sendString = "";
                     recvBytes = 0;
                     txt_mesaggio.Text = "";
                
@@ -139,9 +143,13 @@ namespace Tepsit10._12._2020
                 btn_connect.Location = new Point(227, 89);
 
             }
+            if (txt_mesaggio.Text.ToUpper().Trim() == "")
+            {
+                errore.Text = "Messagi vuoti non possono essere mandati :/ ";
+            }
 
 
-          
+
         }
 
         private void btn_disconeti_Click(object sender, EventArgs e)
@@ -163,5 +171,11 @@ namespace Tepsit10._12._2020
             btn_connect.Enabled = true;
             btn_connect.Location = new Point(227,89);
         }
+        private void Invia(object sender, EventArgs e)
+        {
+        
+        }
+
+
     }
 }
